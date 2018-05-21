@@ -1,0 +1,15 @@
+<div class="houses">
+  <mat-card class="example-card" *ngFor="let house of houses" [routerLink]="['/house', house.id]">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><i class="material-icons">beach_access</i></div>
+      <mat-card-title >{{house.name}}</mat-card-title>
+      <mat-card-subtitle>{{house.address.city}}</mat-card-subtitle>
+    </mat-card-header>
+      <img mat-card-image src="../../../../assets/{{house.id}}.PNG" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <i class="material-icons">pets</i>
+      <i class="material-icons">child_care</i>
+      <p>{{house.price}}€/night</p>
+    </mat-card-content>
+  </mat-card>
+</div>

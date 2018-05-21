@@ -1,0 +1,43 @@
+<div class="search-container">
+  <mat-form-field>
+    <input matInput placeholder="City">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Number of nights">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Type of house">
+      <mat-option value="option">Family house</mat-option>
+      <mat-option value="option">Beach house</mat-option>
+      <mat-option value="option">Cottage</mat-option>
+      <mat-option value="option">Flat</mat-option>
+      <mat-option value="option">Castle</mat-option>
+      <mat-option value="option">Farm house</mat-option>
+      <mat-option value="option">Houseboat</mat-option>
+      <mat-option value="option">Igloo</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Travelers">
+      <mat-option value="option">1</mat-option>
+      <mat-option value="option">2</mat-option>
+      <mat-option value="option">3</mat-option>
+      <mat-option value="option">4</mat-option>
+      <mat-option value="option">5</mat-option>
+      <mat-option value="option">6</mat-option>
+      <mat-option value="option">7</mat-option>
+      <mat-option value="option">8</mat-option>
+      <mat-option value="option">9</mat-option>
+      <mat-option value="option">10+</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button (click)="searchForApartmants()">Search</button>
+</div>
