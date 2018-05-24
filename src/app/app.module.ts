@@ -18,7 +18,14 @@ import {
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCardModule
+  MatCardModule,
+  MatTabsModule,
+  MatTableModule,
+  MatBadgeModule,
+  MatDialogModule,
+  MatCheckbox,
+  MatCheckboxModule,
+  MatTooltipModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +36,10 @@ import { HouseComponent } from './components/house/house.component';
 import { LoginComponent } from './components/account/login/login.component';
 import { SignupComponent } from './components/account/signup/signup.component';
 import { LogOffComponent } from './components/account/log-off/log-off.component';
+import { AccountComponent } from './components/account/account.component';
+import { AddPropertyComponent } from './components/add-property/add-property.component';
+import { HousesService } from './services/houses.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -41,7 +52,9 @@ import { LogOffComponent } from './components/account/log-off/log-off.component'
     HouseComponent,
     LoginComponent,
     SignupComponent,
-    LogOffComponent
+    LogOffComponent,
+    AccountComponent,
+    AddPropertyComponent
   ],
   imports: [
     BrowserModule,
@@ -61,9 +74,17 @@ import { LogOffComponent } from './components/account/log-off/log-off.component'
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatTableModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatTooltipModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [HousesService],
+  bootstrap: [AppComponent],
+  entryComponents: [AddPropertyComponent]
 })
 export class AppModule { }

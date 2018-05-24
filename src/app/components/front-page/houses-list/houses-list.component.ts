@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HousesService } from '../../../services/houses.service';
 @Component({
   selector: 'app-houses-list',
   templateUrl: './houses-list.component.html',
@@ -44,9 +44,16 @@ export class HousesListComponent implements OnInit {
      'price': '100', 'address' : {'country': 'Spain', 'city': 'Palma'}
     }
   ];
-  constructor() { }
-
+  constructor(private _housesService: HousesService) { }
+  getAllHouses() {
+    this._housesService.getAllHouses()
+      .subscribe((res) => {
+        console.log(res);
+        this.houses = res;
+  });
+}
   ngOnInit() {
+    this.getAllHouses();
   }
 
 }

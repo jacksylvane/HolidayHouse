@@ -16,6 +16,10 @@ export class SearchComponent implements OnInit {
     });
   }
   searchForApartmants() {
+    setTimeout(function () {
+      const x = document.querySelector(`.houses-container`);
+      x.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
     console.log(this.options);
   }
   ngOnInit() {

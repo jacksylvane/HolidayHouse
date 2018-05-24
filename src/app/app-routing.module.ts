@@ -5,12 +5,14 @@ import { HouseComponent } from './components/house/house.component';
 import { SignupComponent } from './components/account/signup/signup.component';
 import { LogOffComponent } from './components/account/log-off/log-off.component';
 import { LoginComponent } from './components/account/login/login.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   { path: 'house/:id', component: HouseComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent},
   { path: 'log-of', component: LogOffComponent},
+  { path: 'account', component: AccountComponent},
   {
     path: '**',
     component: FrontPageComponent
