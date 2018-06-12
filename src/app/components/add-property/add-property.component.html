@@ -1,55 +1,58 @@
 <div class="add-property-container">
   <h1>Add Property</h1>
-  <mat-dialog-content>
-    <mat-form-field>
-      <input matInput placeholder="Name">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Type of property">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Country">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="City">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Street">
-    </mat-form-field>
-    <div>
-      <label>Picture</label>
-      <input mat-raised-button type="file" hidden id="myFile">
-      <button mat-raised-button matTooltip="Maximum size of picture should be 3Mb. We only support .PNG and .JPG" type="button" (click)="openFileWindow()">Upload picture</button>
-    </div>
-    
-    <mat-form-field>
-      <input matInput placeholder="Phone of the owner">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Price per night">
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Maximum number of people">
-    </mat-form-field>
-
-    <mat-checkbox>Family friendly</mat-checkbox>
-    <mat-checkbox>Pet friendly</mat-checkbox>
-
-    <mat-form-field>
-      <textarea matInput placeholder="Description"></textarea>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-dialog-content>
-  <button mat-raised-button mat-dialog-close>Add</button>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <mat-dialog-content>
+      <mat-form-field>
+        <input formControlName="name" matInput placeholder="Name">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input formControlName="typeOfProperty" matInput placeholder="Type of property">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input formControlName="country" matInput placeholder="Country">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input formControlName="city" matInput placeholder="City">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input formControlName="street" matInput placeholder="Street">
+      </mat-form-field>
+      <div>
+        <label>Picture</label>
+        <input mat-raised-button type="file" hidden id="myFile">
+        <button mat-raised-button matTooltip="Maximum size of picture should be 3Mb. We only support .PNG and .JPG" type="button" (click)="openFileWindow()">Upload picture</button>
+        <button type="button" (click)="upload()"></button>
+      </div>
+      
+      <mat-form-field>
+        <input formControlName="phone" matInput placeholder="Phone of the owner">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input formControlName="price" matInput placeholder="Price per night">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <input formControlName="maxPeople" matInput placeholder="Maximum number of people">
+      </mat-form-field>
+  
+      <mat-checkbox formControlName="familyFriendly" >Family friendly</mat-checkbox>
+      <mat-checkbox formControlName="petFriendly" >Pet friendly</mat-checkbox>
+  
+      <mat-form-field>
+        <textarea formControlName="description" matInput placeholder="Description"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-select placeholder="Select">
+          <mat-option value="option">Option</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-dialog-content>
+    <button mat-raised-button type="submit" class="btn submit-btn" [disabled]="!myForm.valid">Add</button>
+  </form>
 </div>

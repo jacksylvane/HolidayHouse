@@ -25,7 +25,8 @@ import {
   MatDialogModule,
   MatCheckbox,
   MatCheckboxModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -81,7 +82,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     MatCheckboxModule,
     MatTooltipModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [HousesService],
   bootstrap: [AppComponent],

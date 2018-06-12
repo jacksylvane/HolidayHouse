@@ -15,9 +15,47 @@ table
 button
   i
     color: #67bdc8
-
+\::ng-deep .mat-tab-body-wrapper
+  padding-top: 1rem    
+.historyRentals
+  td:nth-child(2)
+    font-style: italic
+  .paid
+    color: #22630a
+  .notPaid
+    color: #913535  
 #add-property
   position: fixed
   right: 2rem
   bottom: 2rem
   z-index: 1
+.confirm-delete
+  position: fixed
+  background: rgba(0, 0, 0, 0.5)
+  width: 100%
+  top: 0
+  left: 0
+  height: 100vh
+  color: white
+  text-align: center
+  padding: 5rem 0
+  font-weight: bold
+  z-index: 1
+  .confirmPopup
+    background: white
+    padding: 5rem
+    color:#5c5858
+    width: max-content
+    margin: 0 auto
+    border-radius: 3px
+    box-shadow: 0 2px 13px 4px rgba(0, 0, 0, 0.23)
+    .text
+      margin-bottom: 3rem
+    button
+      border: none
+      padding: 0.5rem 0.7rem
+      border-radius: 2px
+      letter-spacing: 1px
+    .btn-delete
+      margin-right: 1rem
+      background: linear-gradient(90deg, #763131, #d55252)   

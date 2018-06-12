@@ -28,7 +28,28 @@ router.get('/houses', (req, res) => {
     res.json(response);
   });
 });
+router.post('/add-house', (req, res) => {
+  console.log(req.body);
+  db.houses.insert(req.body, (err, users) => {
+    if (err) return next(err);
+    response.data = users;
+    response.message = 'Log has been succesfully added.'
+    res.json(response);
+  });
+});
 
-
+// Delete house
+router.post('/delete-house/:id', (req, res) => {
+  // console.log("Received DELETE request");
+  console.log(req.params.id);
+  db.houses.remove({
+    _id: mongojs.ObjectId(req.params.id)
+  }, (err, users) => {
+    if (err) return next(err);
+    response.data = users;
+    response.message = 'Log has been succesfully deleted.'
+    res.json(response);
+  });
+});
 
 module.exports = router;
