@@ -263,7 +263,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    <div class=\"account-container\">\n    <h2 class=\"example-h2\">Account Michal Sisak</h2>\n    <mat-tab-group class=\"demo-tab-group\">\n      <mat-tab label=\"Your houses\">\n        <div class=\"houses-container\">\n            <mat-card *ngFor=\"let house of houses\">\n              <mat-card-header>\n                <div mat-card-avatar class=\"example-header-image\" [routerLink]=\"['/house', house.id]\">\n                  <i class=\"material-icons\">beach_access</i>\n                </div>\n                <mat-card-title>{{house.name}}</mat-card-title>\n                <mat-card-subtitle>{{house.address.city}}</mat-card-subtitle>\n              </mat-card-header>\n              <img mat-card-image src=\"../../../../assets/{{house.id}}.PNG\" alt=\"Photo of a Shiba Inu\">\n              <mat-card-content>\n                <i class=\"material-icons\">pets</i>\n                <i class=\"material-icons\">child_care</i>\n                <p>{{house.price}}€/night</p>\n              </mat-card-content>\n              <mat-card-actions>\n                <button mat-button><i class=\"material-icons\">edit</i></button>\n                <button mat-button (click)=\"initDelete(i, house._id)\"><i class=\"material-icons\">delete</i></button>\n              </mat-card-actions>\n            </mat-card>\n        </div>\n      </mat-tab>\n      <mat-tab label=\"History rentals\">\n        <div class=\"demo-tab-content\">\n          <mat-form-field>\n            <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n          </mat-form-field>\n          \n          <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8 historyRentals\">\n          \n            <!-- Position Column -->\n            <ng-container matColumnDef=\"position\">\n              <th mat-header-cell *matHeaderCellDef> Date. </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\n            </ng-container>\n          \n            <!-- Name Column -->\n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef> Price </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n          \n            <!-- Weight Column -->\n            <ng-container matColumnDef=\"weight\">\n              <th mat-header-cell *matHeaderCellDef> Visitors </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.weight}} </td>\n            </ng-container>\n          \n            <!-- Symbol Column -->\n            <ng-container matColumnDef=\"symbol\">\n              <th mat-header-cell *matHeaderCellDef> Status </th>\n              <td mat-cell *matCellDef=\"let element\" [ngClass]=\"getPaymentClass(element)\"> {{element.symbol}} </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n          </table>\n        </div>\n      </mat-tab>\n      <mat-tab label=\"Account settings\">\n        <div class=\"demo-tab-content\">\n          Oops, we can't find any information about you. Please check later.\n        </div>  \n      </mat-tab>\n    </mat-tab-group>\n        </div>\n  <button mat-fab id=\"add-property\">\n    <mat-icon aria-label=\"Example icon-button with a heart icon\" (click)=\"openDialog()\">add</mat-icon>\n  </button>\n  <div *ngIf=\"showConfirmDelete\" class=\"confirm-delete\">\n    <div class=\"confirmPopup\">\n      <div class=\"text\">\n        Do you really want to delete this log?\n      </div>\n      <button type=\"button\" class=\"btn btn-delete\" (click)=\"deleteLog(i, id)\">DELETE</button>\n      <button type=\"button\" class=\"btn btn-cancel\" (click)=\"this.showConfirmDelete = false\">CANCEL</button>\n    </div>\n  </div>"
+module.exports = "    <div class=\"account-container\">\n    <h2 class=\"example-h2\">Account Michal Sisak</h2>\n    <mat-tab-group class=\"demo-tab-group\">\n      <mat-tab label=\"Your houses\">\n        <div class=\"houses-container\">\n            <mat-card *ngFor=\"let house of houses; let i = index\">\n              <mat-card-header>\n                <div mat-card-avatar class=\"example-header-image\" [routerLink]=\"['/house', house.id]\">\n                  <i class=\"material-icons\">beach_access</i>\n                </div>\n                <mat-card-title>{{house.name}}</mat-card-title>\n                <mat-card-subtitle>{{house.address.city}}</mat-card-subtitle>\n              </mat-card-header>\n              <img mat-card-image src=\"../../../../assets/{{ i + 1}}.PNG\" alt=\"Photo of a Shiba Inu\">\n              <mat-card-content>\n                <i class=\"material-icons\">pets</i>\n                <i class=\"material-icons\">child_care</i>\n                <p>{{house.price}}€/night</p>\n              </mat-card-content>\n              <mat-card-actions>\n                <button mat-button><i class=\"material-icons\">edit</i></button>\n                <button mat-button (click)=\"initDelete(i, house._id)\"><i class=\"material-icons\">delete</i></button>\n              </mat-card-actions>\n            </mat-card>\n        </div>\n      </mat-tab>\n      <mat-tab label=\"History rentals\">\n        <div class=\"demo-tab-content\">\n          <mat-form-field>\n            <input matInput (keyup)=\"applyFilter($event.target.value)\" placeholder=\"Filter\">\n          </mat-form-field>\n          \n          <table mat-table [dataSource]=\"dataSource\" class=\"mat-elevation-z8 historyRentals\">\n          \n            <!-- Position Column -->\n            <ng-container matColumnDef=\"position\">\n              <th mat-header-cell *matHeaderCellDef> Date. </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.position}} </td>\n            </ng-container>\n          \n            <!-- Name Column -->\n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef> Price </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n          \n            <!-- Weight Column -->\n            <ng-container matColumnDef=\"weight\">\n              <th mat-header-cell *matHeaderCellDef> Visitors </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.weight}} </td>\n            </ng-container>\n          \n            <!-- Symbol Column -->\n            <ng-container matColumnDef=\"symbol\">\n              <th mat-header-cell *matHeaderCellDef> Status </th>\n              <td mat-cell *matCellDef=\"let element\" [ngClass]=\"getPaymentClass(element)\"> {{element.symbol}} </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n          </table>\n        </div>\n      </mat-tab>\n      <!-- <mat-tab label=\"Account settings\">\n        <div class=\"demo-tab-content\">\n          Oops, we can't find any information about you. Please check later.\n        </div>  \n      </mat-tab> -->\n    </mat-tab-group>\n        </div>\n  <button mat-fab id=\"add-property\">\n    <mat-icon aria-label=\"Example icon-button with a heart icon\" (click)=\"openDialog()\">add</mat-icon>\n  </button>\n  <div *ngIf=\"showConfirmDelete\" class=\"confirm-delete\">\n    <div class=\"confirmPopup\">\n      <div class=\"text\">\n        Do you really want to delete this log?\n      </div>\n      <button type=\"button\" class=\"btn btn-delete\" (click)=\"deleteLog(i, id)\">DELETE</button>\n      <button type=\"button\" class=\"btn btn-cancel\" (click)=\"this.showConfirmDelete = false\">CANCEL</button>\n    </div>\n  </div>"
 
 /***/ }),
 
@@ -390,7 +390,7 @@ var AccountComponent = /** @class */ (function () {
                 }, 3000);
             }
         });
-        // this.logs.splice(this.logToDeleteIndex, 1);
+        this.houses.splice(this.logToDeleteIndex, 1);
         // this._notificationService.showNotification('Log has been deleted! 💣🗑️');
     };
     AccountComponent.prototype.applyFilter = function (filterValue) {
@@ -718,7 +718,7 @@ var AddPropertyComponent = /** @class */ (function () {
             phone: myForm.value.phone,
             price: myForm.value.price,
             maxPeople: myForm.value.maxPeople,
-            familFriendly: myForm.value.familyFriendly,
+            familyFriendly: myForm.value.familyFriendly,
             petFriendly: myForm.value.petFriendly,
             description: myForm.value.description
         };
@@ -732,35 +732,42 @@ var AddPropertyComponent = /** @class */ (function () {
                 }, 3000);
             }
             else {
-                console.log('error');
-                // this._notificationService.showNotification('There was a problem trying to save log.⚠️⚠️ ');
+                _this.snackBar.open('There was a problem with adding a property. Please try again.');
+                setTimeout(function () {
+                    _this.snackBar.dismiss();
+                }, 3000);
             }
         });
     };
     AddPropertyComponent.prototype.upload = function () {
-        // locate the file element meant for the file upload.
+        // let fileList: FileList = event.target.files;
         var inputEl = this.el.nativeElement.querySelector('#myFile');
-        // get the total amount of files attached to the file input.
         var fileCount = inputEl.files.length;
-        // create a new fromdata instance
-        var formData = new FormData();
-        // check if the filecount is greater than zero, to be sure a file was selected.
         if (fileCount > 0) {
+            var file = inputEl.files.item(0);
+            var formData = new FormData();
+            formData.append('uploadFile', file, 'house');
+            this._housesService.uploadImage(inputEl.files.item(0));
+            this.http.post(URL, formData);
+            // locate the file element meant for the file upload.
+            // get the total amount of files attached to the file input.
+            // create a new fromdata instance
+            // const formData = new FormData();
+            // check if the filecount is greater than zero, to be sure a file was selected.
+            // if (fileCount > 0) { // a file was selected
             // append the key name 'photo' with the first file in the element
-            formData.append('photo', inputEl.files.item(0));
-            console.log(formData);
+            // formData.append('photo', inputEl.files.item(0));
+            // console.log(inputEl.files.item(0));
             // call the angular http method
-            this.http
-                .post(URL, formData).map(function (res) { return res.json(); }).subscribe(
-            // map the success function and alert the response
-            function (success) {
-                alert(success);
-            }, function (error) { return alert(error); });
+            // tslint:disable-next-line:max-line-length
+            // post the form data to the url defined above and map the response.
+            // Then subscribe //to initiate the post. if you don't subscribe, angular wont post.
+            // }
         }
     };
     AddPropertyComponent.prototype.ngOnInit = function () {
         this.myForm = this.fb.group({
-            name: '',
+            name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             typeOfProperty: '',
             country: '',
             city: '',
@@ -874,7 +881,7 @@ var FrontPageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"houses\">\n  <mat-card class=\"example-card\" *ngFor=\"let house of houses\" [routerLink]=\"['/house', house.id]\">\n    <mat-card-header>\n      <div mat-card-avatar class=\"example-header-image\"><i class=\"material-icons\">beach_access</i></div>\n      <mat-card-title >{{house.name}}</mat-card-title>\n      <mat-card-subtitle>{{house.address.city}}</mat-card-subtitle>\n    </mat-card-header>\n      <img mat-card-image src=\"../../../../assets/{{house.id}}.PNG\" alt=\"Photo of a Shiba Inu\">\n    <mat-card-content>\n      <i class=\"material-icons\">pets</i>\n      <i class=\"material-icons\">child_care</i>\n      <p>{{house.price}}€/night</p>\n    </mat-card-content>\n  </mat-card>\n</div>"
+module.exports = "<div class=\"houses\">\n  <mat-card class=\"example-card\" *ngFor=\"let house of houses; let i = index\" [routerLink]=\"['/house', house.id]\">\n    <mat-card-header>\n      <div mat-card-avatar class=\"example-header-image\"><i class=\"material-icons\">beach_access</i></div>\n      <mat-card-title >{{house.name}}</mat-card-title>\n      <mat-card-subtitle>{{house.address.city}}</mat-card-subtitle>\n    </mat-card-header>\n      <img mat-card-image src='../../../../assets/{{ i +1 }}.PNG' alt=\"Photo of a Shiba Inu\">\n    <mat-card-content>\n      <i class=\"material-icons\" *ngIf=\"house.petFriendly\">pets</i>\n      <i class=\"material-icons\" *ngIf=\"house.familyFriendly\">child_care</i>\n      <p>{{house.price}}€/night</p>\n    </mat-card-content>\n  </mat-card>\n</div>"
 
 /***/ }),
 
@@ -1227,6 +1234,32 @@ var HousesService = /** @class */ (function () {
         var _this = this;
         return this._http.get('/api/houses').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(function (result) { return _this.result = result.data; }));
     };
+    HousesService.prototype.uploadImage = function (img) {
+        console.log(img);
+        var headers = new Headers();
+        /** In Angular 5, including the header Content-Type can invalidate your request */
+        // headers.append('Content-Type', 'multipart/form-data');
+        // headers.append('Accept', 'application/json');
+        // const requestOptions = {
+        //   params: new HttpParams()
+        // };
+        // requestOptions.params.set('headers', 'headers');
+        // const options = new RequestOptions({ headers: headers });
+        return this._http.post('/api/upload-image', img, {
+            headers: { 'Content-Type': 'multipart/form-data', 'Accept': 'application/json' }
+        })
+            .subscribe(function (data) { return console.log('success'); }, function (error) { return console.log(error); });
+    };
+    // return new Promise((resolve, reject) => {
+    //   this._http.post('/api/upload-image', img)
+    //     .subscribe(res => {
+    //       // this.add(res);
+    //       resolve(res);
+    //     }, (err) => {
+    //       reject(err);
+    //     });
+    // });
+    // }
     HousesService.prototype.insertProperty = function (newHouse) {
         var _this = this;
         console.log(newHouse);

@@ -92,7 +92,7 @@ export class AccountComponent {
         }, 3000);
       }
     });
-    // this.logs.splice(this.logToDeleteIndex, 1);
+    this.houses.splice(this.logToDeleteIndex, 1);
     // this._notificationService.showNotification('Log has been deleted! 💣🗑️');
   }
   applyFilter(filterValue: string) {

@@ -22,13 +22,13 @@ export class AddPropertyComponent implements OnInit {
   ) {
     console.log(this.uuidv4());
   }
- uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    // tslint:disable-next-line:no-bitwise
-    const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
+  uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      // tslint:disable-next-line:no-bitwise
+      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
   openFileWindow() {
     document.getElementById('myFile').click();
   }
@@ -47,7 +47,7 @@ export class AddPropertyComponent implements OnInit {
       phone: myForm.value.phone,
       price: myForm.value.price,
       maxPeople: myForm.value.maxPeople,
-      familFriendly: myForm.value.familyFriendly,
+      familyFriendly: myForm.value.familyFriendly,
       petFriendly: myForm.value.petFriendly,
       description: myForm.value.description
     };
@@ -56,44 +56,48 @@ export class AddPropertyComponent implements OnInit {
         console.log(res);
         if (res.message = 'Log has been succesfully added.') {
           this.snackBar.open('Property has been succesfully added.');
-         setTimeout(() => {
-           this.snackBar.dismiss();
-         }, 3000);
+          setTimeout(() => {
+            this.snackBar.dismiss();
+          }, 3000);
         } else {
-          console.log('error');
-          // this._notificationService.showNotification('There was a problem trying to save log.⚠️⚠️ ');
+          this.snackBar.open('There was a problem with adding a property. Please try again.');
+          setTimeout(() => {
+            this.snackBar.dismiss();
+          }, 3000);
         }
       });
   }
 
   upload() {
-    // locate the file element meant for the file upload.
+    // let fileList: FileList = event.target.files;
     const inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#myFile');
-    // get the total amount of files attached to the file input.
     const fileCount: number = inputEl.files.length;
+    if (fileCount > 0) {
+      const file: File = inputEl.files.item(0);
+      const formData: FormData = new FormData();
+      formData.append('uploadFile', file, 'house');
+      this._housesService.uploadImage(inputEl.files.item(0));
+      this.http.post(URL, formData);
+    // locate the file element meant for the file upload.
+    // get the total amount of files attached to the file input.
     // create a new fromdata instance
-    const formData = new FormData();
+    // const formData = new FormData();
     // check if the filecount is greater than zero, to be sure a file was selected.
-    if (fileCount > 0) { // a file was selected
+    // if (fileCount > 0) { // a file was selected
       // append the key name 'photo' with the first file in the element
-      formData.append('photo', inputEl.files.item(0));
-    console.log(formData);
+      // formData.append('photo', inputEl.files.item(0));
+      // console.log(inputEl.files.item(0));
       // call the angular http method
-      this.http
         // tslint:disable-next-line:max-line-length
-        // post the form data to the url defined above and map the response. Then subscribe //to initiate the post. if you don't subscribe, angular wont post.
-        .post(URL, formData).map((res: Response) => res.json()).subscribe(
-          // map the success function and alert the response
-          (success) => {
-            alert(success);
-          },
-          (error) => alert(error));
-    }
+        // post the form data to the url defined above and map the response.
+      // Then subscribe //to initiate the post. if you don't subscribe, angular wont post.
+    // }
   }
+}
 
   ngOnInit() {
     this.myForm = this.fb.group({
-      name: '',
+      name: ['', Validators.required],
       typeOfProperty: '',
       country: '',
       city: '',
